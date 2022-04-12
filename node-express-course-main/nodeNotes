@@ -1,0 +1,30 @@
+*** fs module
+## require("fs").promises doesn't have stream methods so need to be taken by ourselves
+## fs.unlink() used to delete file 
+## require("utils") has .promisify that converts function taking callback into promise
+**** stream 
+## also works with eventEmitters 
+## on("data",(chunk))
+## stream.pipe(res) calls res.on("pipe") if it's present it send data using that,it auto closes request
+
+**** http module
+## should have res.end()
+## res.writeHeader(status,headersObject) otherwise default headers given 
+## res.write(chunk,callback) used to send data in chunks
+## MEME types are specified in headersObject as {'content-type': 'text/plain'}
+### requires create if/else for every route and passing headers explicitly, also resources routes should be defined explicitl
+
+
+**** express
+app = express()
+app.use(midleware)
+app.get(path,(req,res)=>{})
+app.post()....
+app.listen(port,callback)
+
+## sending resourse on some route
+app.get(path,(req,res)=>{ res.sendFile(path.resolve(__dirname,'filepapth'))})
+for sending many resource files on different routes we uses middleware
+app.use(express.static("resourcePath"))
+
+
